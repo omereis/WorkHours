@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\global\\inifile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\dbparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:dbparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\editdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:editdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\editdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:editdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IniFile.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Global\\IniFile.cs",
+              "RelativeDocumentMoniker": "..\\Global\\IniFile.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Global\\IniFile.cs",
+              "RelativeToolTip": "..\\Global\\IniFile.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAgwCoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T08:21:34.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DBParams.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\DBParams.cs",
+              "RelativeDocumentMoniker": "DBParams.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\DBParams.cs",
+              "RelativeToolTip": "DBParams.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T06:38:44.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EditDB.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditDB.cs",
+              "RelativeDocumentMoniker": "EditDB.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditDB.cs",
+              "RelativeToolTip": "EditDB.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAABQAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-23T09:18:00.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EditDB.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditDB.cs",
+              "RelativeDocumentMoniker": "EditDB.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditDB.cs [Design]",
+              "RelativeToolTip": "EditDB.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-23T09:13:26.768Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
+              "RelativeDocumentMoniker": "main.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
+              "RelativeToolTip": "main.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAQwE0AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T13:15:32.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
+              "RelativeDocumentMoniker": "main.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs [Design]",
+              "RelativeToolTip": "main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T10:08:19.346Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
