@@ -37,6 +37,10 @@
 			label5 = new Label();
 			txtbxTitle = new TextBox();
 			btnTest = new Button();
+			txtJson = new TextBox();
+			button1 = new Button();
+			button2 = new Button();
+			button3 = new Button();
 			SuspendLayout();
 			// 
 			// btnOK
@@ -162,6 +166,45 @@
 			btnTest.TabIndex = 12;
 			btnTest.Text = "Test...";
 			btnTest.UseVisualStyleBackColor = true;
+			btnTest.Click += btnTest_Click;
+			// 
+			// txtJson
+			// 
+			txtJson.Location = new Point(405, 14);
+			txtJson.Multiline = true;
+			txtJson.Name = "txtJson";
+			txtJson.Size = new Size(214, 165);
+			txtJson.TabIndex = 13;
+			// 
+			// button1
+			// 
+			button1.Location = new Point(266, 72);
+			button1.Name = "button1";
+			button1.Size = new Size(75, 23);
+			button1.TabIndex = 14;
+			button1.Text = "Compose";
+			button1.UseVisualStyleBackColor = true;
+			button1.Click += button1_Click;
+			// 
+			// button2
+			// 
+			button2.Location = new Point(266, 14);
+			button2.Name = "button2";
+			button2.Size = new Size(75, 23);
+			button2.TabIndex = 15;
+			button2.Text = "Clear";
+			button2.UseVisualStyleBackColor = true;
+			button2.Click += button2_Click;
+			// 
+			// button3
+			// 
+			button3.Location = new Point(266, 43);
+			button3.Name = "button3";
+			button3.Size = new Size(75, 23);
+			button3.TabIndex = 16;
+			button3.Text = "Json";
+			button3.UseVisualStyleBackColor = true;
+			button3.Click += button3_Click;
 			// 
 			// EditDB
 			// 
@@ -169,7 +212,11 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(380, 263);
+			ClientSize = new Size(645, 263);
+			Controls.Add(button3);
+			Controls.Add(button2);
+			Controls.Add(button1);
+			Controls.Add(txtJson);
 			Controls.Add(btnTest);
 			Controls.Add(txtbxTitle);
 			Controls.Add(label5);
@@ -211,5 +258,9 @@
 		private Label label5;
 		private TextBox txtbxTitle;
 		private Button btnTest;
+		private TextBox txtJson;
+		private Button button1;
+		private Button button2;
+		private Button button3;
 	}
 }

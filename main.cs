@@ -37,18 +37,18 @@ namespace WorkHours {
 				}
 			}
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
 			UpdateStatusBar();
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private void UpdateStatusBar() {
 			if(IsDatabaseConnected())
 				sblblDatabase.Text = m_database.Database + " Connected";
 			else
 				sblblDatabase.Text = "Database Disconnected";
 		}
-
+		//-----------------------------------------------------------------------------
 		private bool IsDatabaseConnected() {
 			bool fOpen = false;
 
@@ -57,26 +57,46 @@ namespace WorkHours {
 					fOpen = true;
 			return (fOpen);
 		}
-//------------------------------------------------------------------------------
+		//------------------------------------------------------------------------------
 		private void miDatabase_Click(object sender, EventArgs e) {
+			TDBParams db_params = new TDBParams();
+			db_params.Database = "const_hours";
+			db_params.Server = "127.0.0.1";
+			db_params.Username = "omer_sqa";
+			db_params.Password = "rotem24";
+			//string strConn = string.Format("Server='{0}'; database='{1}'; UID='{2}'; password='{3}'", "127.0.0.1", "const_hours", "omer_sqa", "rotem24");
+	
 			EditDB dlg = new EditDB();
-			dlg.Execute();
+			dlg.Execute(db_params);
 		}
-//------------------------------------------------------------------------------
+		//------------------------------------------------------------------------------
 		private void button1_Click(object sender, EventArgs e) {
-/**/
-			if (dlgIni.ShowDialog() == DialogResult.OK) {
+			if(dlgIni.ShowDialog() == DialogResult.OK) {
 				TIniFile ini = new TIniFile(dlgIni.FileName);
 				string[] astr = ini.Sections();
 				trv.Nodes.Clear();
-				if (astr != null ) {
-					for (int n=0 ; n < astr.Length ; n++) {
+				if(astr != null) {
+					for(int n = 0; n < astr.Length; n++) {
 						trv.Nodes.Add(astr[n]);
 					}
 				}
 			}
-/**/
 		}
-//------------------------------------------------------------------------------
+
+		private void button2_Click(object sender, EventArgs e) {
+			TreeNode node = trv.SelectedNode;
+			TIniFile ini = new TIniFile(dlgIni.FileName);
+
+			lstbx.Items.Clear();
+			if (node == null)
+				txtbx.Text = "";
+			else {
+				txtbx.Text = node.Text.Trim();
+				string[] astr = ini.Keys(node.Text.Trim());
+				for (int n=0 ; n < astr?.Length ; n++)
+					lstbx.Items.Add(astr[n]);
+			}
+		}
+		//------------------------------------------------------------------------------
 	}
 }

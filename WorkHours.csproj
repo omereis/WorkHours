@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\Global\DBParams.cs" Link="DBParams.cs" />
     <Compile Include="..\Global\IniFile.cs" Link="IniFile.cs" />
     <Compile Include="..\Global\Misc.cs" Link="Misc.cs" />
   </ItemGroup>

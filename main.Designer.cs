@@ -32,6 +32,9 @@
 			dlgIni = new OpenFileDialog();
 			button1 = new Button();
 			trv = new TreeView();
+			button2 = new Button();
+			txtbx = new TextBox();
+			lstbx = new ListBox();
 			menuMain.SuspendLayout();
 			status_bar.SuspendLayout();
 			SuspendLayout();
@@ -55,14 +58,14 @@
 			// miFileExit
 			// 
 			miFileExit.Name = "miFileExit";
-			miFileExit.Size = new Size(180, 22);
+			miFileExit.Size = new Size(141, 22);
 			miFileExit.Text = "יציאה";
 			miFileExit.Click += miFileExit_Click;
 			// 
 			// miDatabase
 			// 
 			miDatabase.Name = "miDatabase";
-			miDatabase.Size = new Size(180, 22);
+			miDatabase.Size = new Size(141, 22);
 			miDatabase.Text = "מסד נתונים...";
 			miDatabase.Click += miDatabase_Click;
 			// 
@@ -84,15 +87,15 @@
 			// dlgIni
 			// 
 			dlgIni.DefaultExt = "*.ini";
-			dlgIni.Filter = "ini files (*.ini)|*.txt|All files (*.*)|*.*";
+			dlgIni.Filter = "ini files (*.ini)|*.ini|All files (*.*)|*.*";
 			// 
 			// button1
 			// 
-			button1.Location = new Point(142, 99);
+			button1.Location = new Point(94, 99);
 			button1.Name = "button1";
-			button1.Size = new Size(75, 23);
+			button1.Size = new Size(111, 23);
 			button1.TabIndex = 2;
-			button1.Text = "button1";
+			button1.Text = "Sections from File";
 			button1.UseVisualStyleBackColor = true;
 			button1.Click += button1_Click;
 			// 
@@ -103,11 +106,42 @@
 			trv.Size = new Size(197, 181);
 			trv.TabIndex = 3;
 			// 
+			// button2
+			// 
+			button2.Location = new Point(108, 270);
+			button2.Name = "button2";
+			button2.Size = new Size(75, 23);
+			button2.TabIndex = 4;
+			button2.Text = "button2";
+			button2.UseVisualStyleBackColor = true;
+			button2.Click += button2_Click;
+			// 
+			// txtbx
+			// 
+			txtbx.Location = new Point(144, 232);
+			txtbx.Name = "txtbx";
+			txtbx.RightToLeft = RightToLeft.No;
+			txtbx.Size = new Size(100, 23);
+			txtbx.TabIndex = 5;
+			// 
+			// lstbx
+			// 
+			lstbx.FormattingEnabled = true;
+			lstbx.ItemHeight = 15;
+			lstbx.Location = new Point(266, 245);
+			lstbx.Name = "lstbx";
+			lstbx.RightToLeft = RightToLeft.No;
+			lstbx.Size = new Size(197, 94);
+			lstbx.TabIndex = 6;
+			// 
 			// main
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(655, 450);
+			Controls.Add(lstbx);
+			Controls.Add(txtbx);
+			Controls.Add(button2);
 			Controls.Add(trv);
 			Controls.Add(button1);
 			Controls.Add(status_bar);
@@ -136,5 +170,8 @@
 		private OpenFileDialog dlgIni;
 		private Button button1;
 		private TreeView trv;
+		private Button button2;
+		private TextBox txtbx;
+		private ListBox lstbx;
 	}
 }
