@@ -8,6 +8,9 @@ using MySql.Data.MySqlClient;
 //using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using OmerEisGlobal;
+using System.Net.NetworkInformation;
+using System.Diagnostics;
+using System.Linq;
 //-----------------------------------------------------------------------------
 namespace WorkHours {
 	public partial class main : Form {
@@ -24,7 +27,15 @@ namespace WorkHours {
 		private void main_Load(object sender, EventArgs e) {
 			Application.Idle += OnIdle;
 			if(m_database == null) {
-				string strConn = string.Format("Server='{0}'; database='{1}'; UID='{2}'; password='{3}'", "127.0.0.1", "const_hours", "omer_sqa", "rotem24");
+				TIniFile ini = new TIniFile(GetIniName());
+				string strDB = ini.ReadString("Database", "Production");
+				string strConn;
+				if(strDB.Length > 0) {
+					TDBParams db_params = new TDBParams();
+					db_params.FromJson(strDB);
+					strConn = db_params.GetConnectionString();
+				} else
+					strConn = string.Format("Server='{0}'; database='{1}'; UID='{2}'; password='{3}'", "127.0.0.1", "const_hours", "omer_sqa", "rotem24");
 				m_database = new MySqlConnection(strConn);
 				try {
 					m_database.Open();
@@ -48,7 +59,7 @@ namespace WorkHours {
 			else
 				sblblDatabase.Text = "Database Disconnected";
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private bool IsDatabaseConnected() {
 			bool fOpen = false;
 
@@ -57,17 +68,27 @@ namespace WorkHours {
 					fOpen = true;
 			return (fOpen);
 		}
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		private void miDatabase_Click(object sender, EventArgs e) {
 			TDBParams db_params = new TDBParams();
-			db_params.Database = "const_hours";
-			db_params.Server = "127.0.0.1";
-			db_params.Username = "omer_sqa";
-			db_params.Password = "rotem24";
+			TIniFile ini = new TIniFile(GetIniName());
+			bool fParams = false;
+			string strJsonConn = ini.ReadString("Database", "Production");
+			if(strJsonConn.Length > 0)
+				fParams = db_params.FromJson(strJsonConn);
+			if (!fParams) {
+				db_params.Database = "const_hours";
+				db_params.Server = "127.0.0.1";
+				db_params.Username = "omer_sqa";
+				db_params.Password = "rotem24";
+			}
 			//string strConn = string.Format("Server='{0}'; database='{1}'; UID='{2}'; password='{3}'", "127.0.0.1", "const_hours", "omer_sqa", "rotem24");
-	
+
 			EditDB dlg = new EditDB();
-			dlg.Execute(db_params);
+			if(dlg.Execute(db_params)) {
+				ini = new TIniFile(GetIniName());
+				ini.WriteString("Database", "Production", db_params.ToJson());// .GetConnectionString());
+			}
 		}
 		//------------------------------------------------------------------------------
 		private void button1_Click(object sender, EventArgs e) {
@@ -82,21 +103,54 @@ namespace WorkHours {
 				}
 			}
 		}
-
+		//------------------------------------------------------------------------------
 		private void button2_Click(object sender, EventArgs e) {
 			TreeNode node = trv.SelectedNode;
 			TIniFile ini = new TIniFile(dlgIni.FileName);
 
 			lstbx.Items.Clear();
-			if (node == null)
+			if(node == null)
 				txtbx.Text = "";
 			else {
 				txtbx.Text = node.Text.Trim();
 				string[] astr = ini.Keys(node.Text.Trim());
-				for (int n=0 ; n < astr?.Length ; n++)
+				for(int n = 0; n < astr?.Length; n++)
 					lstbx.Items.Add(astr[n]);
 			}
 		}
 		//------------------------------------------------------------------------------
+		private string GetIniName() {
+			string str = Environment.GetCommandLineArgs()[0];//Application.StartupPath;
+			string strIni = Path.ChangeExtension(str, ".ini");
+			return (strIni);
+		}
+		//------------------------------------------------------------------------------
+		private void button4_Click(object sender, EventArgs e) {
+			TIniFile ini = new TIniFile(GetIniName());
+			string strDB = ini.ReadString("Database", "Production");
+
+		}
+
+		private void button5_Click(object sender, EventArgs e) {
+			txtbxIni.Text = GetIniName();
+		}
+//------------------------------------------------------------------------------
+		private double CheckInternewtTime() {
+        // Create Object Of WebClient
+			System.Net.WebClient wc = new System.Net.WebClient();
+
+        //DateTime Variable To Store Download Start Time.
+			DateTime dt1 = DateTime.UtcNow;
+
+        //Number Of Bytes Downloaded Are Stored In ‘data’
+			byte[] data = wc.DownloadData("http://google.com");
+
+        //DateTime Variable To Store Download End Time.
+			DateTime dt2 = DateTime.UtcNow;
+
+        //To Calculate Speed in Kb Divide Value Of data by 1024 And Then by End Time Subtract Start Time To Know Download Per Second.
+			return Math.Round((data.Length / 1024) / (dt2 - dt1).TotalSeconds, 2);            
+		}
+//------------------------------------------------------------------------------
 	}
 }

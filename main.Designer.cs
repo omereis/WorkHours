@@ -35,6 +35,10 @@
 			button2 = new Button();
 			txtbx = new TextBox();
 			lstbx = new ListBox();
+			button3 = new Button();
+			button4 = new Button();
+			txtbxIni = new TextBox();
+			button5 = new Button();
 			menuMain.SuspendLayout();
 			status_bar.SuspendLayout();
 			SuspendLayout();
@@ -44,7 +48,7 @@
 			menuMain.Items.AddRange(new ToolStripItem[] { popupFile });
 			menuMain.Location = new Point(0, 0);
 			menuMain.Name = "menuMain";
-			menuMain.Size = new Size(655, 24);
+			menuMain.Size = new Size(680, 24);
 			menuMain.TabIndex = 0;
 			menuMain.Text = "menuStrip1";
 			// 
@@ -72,9 +76,9 @@
 			// status_bar
 			// 
 			status_bar.Items.AddRange(new ToolStripItem[] { sblblDatabase });
-			status_bar.Location = new Point(0, 428);
+			status_bar.Location = new Point(0, 383);
 			status_bar.Name = "status_bar";
-			status_bar.Size = new Size(655, 22);
+			status_bar.Size = new Size(680, 22);
 			status_bar.TabIndex = 1;
 			status_bar.Text = "statusStrip1";
 			// 
@@ -91,7 +95,7 @@
 			// 
 			// button1
 			// 
-			button1.Location = new Point(94, 99);
+			button1.Location = new Point(92, 74);
 			button1.Name = "button1";
 			button1.Size = new Size(111, 23);
 			button1.TabIndex = 2;
@@ -101,14 +105,14 @@
 			// 
 			// trv
 			// 
-			trv.Location = new Point(266, 49);
+			trv.Location = new Point(264, 24);
 			trv.Name = "trv";
 			trv.Size = new Size(197, 181);
 			trv.TabIndex = 3;
 			// 
 			// button2
 			// 
-			button2.Location = new Point(108, 270);
+			button2.Location = new Point(106, 245);
 			button2.Name = "button2";
 			button2.Size = new Size(75, 23);
 			button2.TabIndex = 4;
@@ -118,7 +122,7 @@
 			// 
 			// txtbx
 			// 
-			txtbx.Location = new Point(144, 232);
+			txtbx.Location = new Point(142, 207);
 			txtbx.Name = "txtbx";
 			txtbx.RightToLeft = RightToLeft.No;
 			txtbx.Size = new Size(100, 23);
@@ -128,24 +132,64 @@
 			// 
 			lstbx.FormattingEnabled = true;
 			lstbx.ItemHeight = 15;
-			lstbx.Location = new Point(266, 245);
+			lstbx.Location = new Point(264, 220);
 			lstbx.Name = "lstbx";
 			lstbx.RightToLeft = RightToLeft.No;
 			lstbx.Size = new Size(197, 94);
 			lstbx.TabIndex = 6;
 			// 
+			// button3
+			// 
+			button3.Location = new Point(502, 82);
+			button3.Name = "button3";
+			button3.Size = new Size(104, 23);
+			button3.TabIndex = 7;
+			button3.Text = "read database";
+			button3.UseVisualStyleBackColor = true;
+			// 
+			// button4
+			// 
+			button4.Location = new Point(502, 120);
+			button4.Name = "button4";
+			button4.Size = new Size(104, 23);
+			button4.TabIndex = 8;
+			button4.Text = "save database";
+			button4.UseVisualStyleBackColor = true;
+			button4.Click += button4_Click;
+			// 
+			// txtbxIni
+			// 
+			txtbxIni.Location = new Point(11, 345);
+			txtbxIni.Name = "txtbxIni";
+			txtbxIni.Size = new Size(595, 23);
+			txtbxIni.TabIndex = 9;
+			// 
+			// button5
+			// 
+			button5.Location = new Point(69, 316);
+			button5.Name = "button5";
+			button5.Size = new Size(75, 23);
+			button5.TabIndex = 10;
+			button5.Text = "ini";
+			button5.UseVisualStyleBackColor = true;
+			button5.Click += button5_Click;
+			// 
 			// main
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(655, 450);
-			Controls.Add(lstbx);
-			Controls.Add(txtbx);
-			Controls.Add(button2);
-			Controls.Add(trv);
+			ClientSize = new Size(680, 405);
+			Controls.Add(button5);
 			Controls.Add(button1);
+			Controls.Add(txtbxIni);
 			Controls.Add(status_bar);
+			Controls.Add(trv);
 			Controls.Add(menuMain);
+			Controls.Add(button4);
+			Controls.Add(lstbx);
+			Controls.Add(button2);
+			Controls.Add(txtbx);
+			Controls.Add(button3);
 			MainMenuStrip = menuMain;
 			Name = "main";
 			RightToLeft = RightToLeft.Yes;
@@ -173,5 +217,9 @@
 		private Button button2;
 		private TextBox txtbx;
 		private ListBox lstbx;
+		private Button button3;
+		private Button button4;
+		private TextBox txtbxIni;
+		private Button button5;
 	}
 }
