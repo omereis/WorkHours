@@ -3,25 +3,33 @@
   "WorkspaceRootPath": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\global\\inifile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\common\\stringint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\editclients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:editclients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\clients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:clients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\global\\dbparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\bin\\Debug\\net8.0-windows\\WorkHours.ini||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:bin\\Debug\\net8.0-windows\\WorkHours.ini||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\global\\misc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\editclients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:editclients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\common\\misc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\common\\dbparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\editdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,75 +47,98 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WorkHours.ini",
-              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\bin\\Debug\\net8.0-windows\\WorkHours.ini",
-              "RelativeDocumentMoniker": "bin\\Debug\\net8.0-windows\\WorkHours.ini",
-              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\bin\\Debug\\net8.0-windows\\WorkHours.ini",
-              "RelativeToolTip": "bin\\Debug\\net8.0-windows\\WorkHours.ini",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002768|",
-              "WhenOpened": "2024-08-15T14:37:11.656Z",
+              "DocumentIndex": 7,
+              "Title": "DBParams.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Common\\DBParams.cs",
+              "RelativeDocumentMoniker": "..\\Common\\DBParams.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Common\\DBParams.cs",
+              "RelativeToolTip": "..\\Common\\DBParams.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAD4vwwAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T07:00:39.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Misc.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Common\\Misc.cs",
+              "RelativeDocumentMoniker": "..\\Common\\Misc.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Common\\Misc.cs",
+              "RelativeToolTip": "..\\Common\\Misc.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAowFgAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T05:48:32.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Clients.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\Clients.cs",
+              "RelativeDocumentMoniker": "Clients.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\Clients.cs",
+              "RelativeToolTip": "Clients.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T12:17:06.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StringInt.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Common\\StringInt.cs",
+              "RelativeDocumentMoniker": "..\\Common\\StringInt.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Common\\StringInt.cs",
+              "RelativeToolTip": "..\\Common\\StringInt.cs",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAAAGsAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T09:12:39.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EditClients.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditClients.cs",
+              "RelativeDocumentMoniker": "EditClients.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditClients.cs",
+              "RelativeToolTip": "EditClients.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAA4wCoAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T07:18:21.755Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Misc.cs",
-              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Global\\Misc.cs",
-              "RelativeDocumentMoniker": "..\\Global\\Misc.cs",
-              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Global\\Misc.cs",
-              "RelativeToolTip": "..\\Global\\Misc.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAgwCkAAAAIAAAA",
+              "Title": "EditClients.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditClients.cs",
+              "RelativeDocumentMoniker": "EditClients.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditClients.cs [Design]",
+              "RelativeToolTip": "EditClients.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T09:53:42.346Z"
+              "WhenOpened": "2024-08-16T07:25:02.948Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "IniFile.cs",
-              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Global\\IniFile.cs",
-              "RelativeDocumentMoniker": "..\\Global\\IniFile.cs",
-              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Global\\IniFile.cs",
-              "RelativeToolTip": "..\\Global\\IniFile.cs",
-              "ViewState": "AQIAAMEAAAAAAAAAAAAUwMgAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T12:42:11.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DBParams.cs",
-              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Global\\DBParams.cs",
-              "RelativeDocumentMoniker": "..\\Global\\DBParams.cs",
-              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Global\\DBParams.cs",
-              "RelativeToolTip": "..\\Global\\DBParams.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAUwEcAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T10:01:07.432Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "EditDB.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditDB.cs",
               "RelativeDocumentMoniker": "EditDB.cs",
               "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditDB.cs",
               "RelativeToolTip": "EditDB.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAIAwwBsAAAAOAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAIAwwBEAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-23T09:18:00.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "EditDB.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditDB.cs",
               "RelativeDocumentMoniker": "EditDB.cs",
@@ -118,13 +149,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "main.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
               "RelativeDocumentMoniker": "main.cs",
               "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
               "RelativeToolTip": "main.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAADwv0sAAAADAAAA",
+              "ViewState": "AQIAAI0AAAAAAAAAAIA3wKAAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-22T13:15:32.38Z",
               "EditorCaption": ""
@@ -138,7 +169,8 @@
               "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs [Design]",
               "RelativeToolTip": "main.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T10:08:19.346Z"
+              "WhenOpened": "2024-07-22T10:08:19.346Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

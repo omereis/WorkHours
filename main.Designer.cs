@@ -25,8 +25,9 @@
 		private void InitializeComponent() {
 			menuMain = new MenuStrip();
 			popupFile = new ToolStripMenuItem();
-			miFileExit = new ToolStripMenuItem();
 			miDatabase = new ToolStripMenuItem();
+			miFileExit = new ToolStripMenuItem();
+			miClients = new ToolStripMenuItem();
 			status_bar = new StatusStrip();
 			sblblDatabase = new ToolStripStatusLabel();
 			dlgIni = new OpenFileDialog();
@@ -54,24 +55,31 @@
 			// 
 			// popupFile
 			// 
-			popupFile.DropDownItems.AddRange(new ToolStripItem[] { miFileExit, miDatabase });
+			popupFile.DropDownItems.AddRange(new ToolStripItem[] { miDatabase, miFileExit, miClients });
 			popupFile.Name = "popupFile";
 			popupFile.Size = new Size(44, 20);
 			popupFile.Text = "קובץ";
 			// 
-			// miFileExit
-			// 
-			miFileExit.Name = "miFileExit";
-			miFileExit.Size = new Size(141, 22);
-			miFileExit.Text = "יציאה";
-			miFileExit.Click += miFileExit_Click;
-			// 
 			// miDatabase
 			// 
 			miDatabase.Name = "miDatabase";
-			miDatabase.Size = new Size(141, 22);
+			miDatabase.Size = new Size(180, 22);
 			miDatabase.Text = "מסד נתונים...";
 			miDatabase.Click += miDatabase_Click;
+			// 
+			// miFileExit
+			// 
+			miFileExit.Name = "miFileExit";
+			miFileExit.Size = new Size(180, 22);
+			miFileExit.Text = "יציאה";
+			miFileExit.Click += miFileExit_Click;
+			// 
+			// miClients
+			// 
+			miClients.Name = "miClients";
+			miClients.Size = new Size(180, 22);
+			miClients.Text = "לקוחות...";
+			miClients.Click += miClients_Click;
 			// 
 			// status_bar
 			// 
@@ -221,5 +229,6 @@
 		private Button button4;
 		private TextBox txtbxIni;
 		private Button button5;
+		private ToolStripMenuItem miClients;
 	}
 }

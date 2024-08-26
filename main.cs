@@ -2,8 +2,11 @@
 |                                   main.cs                                  |
 \****************************************************************************/
 using MySql.Data.MySqlClient;
-
-
+/*
+ datbase: const_hours
+username: omer_sqa
+password: rotem24
+*/
 //using MySql.Data;
 //using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -11,6 +14,7 @@ using OmerEisGlobal;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
 using System.Linq;
+using OmerEisCommon;
 //-----------------------------------------------------------------------------
 namespace WorkHours {
 	public partial class main : Form {
@@ -19,11 +23,11 @@ namespace WorkHours {
 		public main() {
 			InitializeComponent();
 		}
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		private void miFileExit_Click(object sender, EventArgs e) {
 			Close();
 		}
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		private void main_Load(object sender, EventArgs e) {
 			Application.Idle += OnIdle;
 			if(m_database == null) {
@@ -48,11 +52,11 @@ namespace WorkHours {
 				}
 			}
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
 			UpdateStatusBar();
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void UpdateStatusBar() {
 			if(IsDatabaseConnected())
 				sblblDatabase.Text = m_database.Database + " Connected";
@@ -76,7 +80,7 @@ namespace WorkHours {
 			string strJsonConn = ini.ReadString("Database", "Production");
 			if(strJsonConn.Length > 0)
 				fParams = db_params.FromJson(strJsonConn);
-			if (!fParams) {
+			if(!fParams) {
 				db_params.Database = "const_hours";
 				db_params.Server = "127.0.0.1";
 				db_params.Username = "omer_sqa";
@@ -90,7 +94,7 @@ namespace WorkHours {
 				ini.WriteString("Database", "Production", db_params.ToJson());// .GetConnectionString());
 			}
 		}
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		private void button1_Click(object sender, EventArgs e) {
 			if(dlgIni.ShowDialog() == DialogResult.OK) {
 				TIniFile ini = new TIniFile(dlgIni.FileName);
@@ -103,7 +107,7 @@ namespace WorkHours {
 				}
 			}
 		}
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		private void button2_Click(object sender, EventArgs e) {
 			TreeNode node = trv.SelectedNode;
 			TIniFile ini = new TIniFile(dlgIni.FileName);
@@ -118,13 +122,13 @@ namespace WorkHours {
 					lstbx.Items.Add(astr[n]);
 			}
 		}
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		private string GetIniName() {
 			string str = Environment.GetCommandLineArgs()[0];//Application.StartupPath;
 			string strIni = Path.ChangeExtension(str, ".ini");
 			return (strIni);
 		}
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		private void button4_Click(object sender, EventArgs e) {
 			TIniFile ini = new TIniFile(GetIniName());
 			string strDB = ini.ReadString("Database", "Production");
@@ -136,20 +140,25 @@ namespace WorkHours {
 		}
 //------------------------------------------------------------------------------
 		private double CheckInternewtTime() {
-        // Create Object Of WebClient
+			// Create Object Of WebClient
 			System.Net.WebClient wc = new System.Net.WebClient();
 
-        //DateTime Variable To Store Download Start Time.
+			//DateTime Variable To Store Download Start Time.
 			DateTime dt1 = DateTime.UtcNow;
 
-        //Number Of Bytes Downloaded Are Stored In ‘data’
+			//Number Of Bytes Downloaded Are Stored In ‘data’
 			byte[] data = wc.DownloadData("http://google.com");
 
-        //DateTime Variable To Store Download End Time.
+			//DateTime Variable To Store Download End Time.
 			DateTime dt2 = DateTime.UtcNow;
 
-        //To Calculate Speed in Kb Divide Value Of data by 1024 And Then by End Time Subtract Start Time To Know Download Per Second.
-			return Math.Round((data.Length / 1024) / (dt2 - dt1).TotalSeconds, 2);            
+			//To Calculate Speed in Kb Divide Value Of data by 1024 And Then by End Time Subtract Start Time To Know Download Per Second.
+			return Math.Round((data.Length / 1024) / (dt2 - dt1).TotalSeconds, 2);
+		}
+//------------------------------------------------------------------------------
+		private void miClients_Click(object sender, EventArgs e) {
+			DlgEditClients dlg = new DlgEditClients();
+			dlg.Execute(m_cmd);
 		}
 //------------------------------------------------------------------------------
 	}
