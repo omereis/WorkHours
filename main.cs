@@ -39,15 +39,22 @@ namespace WorkHours {
 					db_params.FromJson(strDB);
 					strConn = db_params.GetConnectionString();
 				} else
+					//strConn = string.Format("Server='{0}'; database='{1}'; UID='{2}'; password='{3}',CharSet=utf8", "127.0.0.1", "const_hours", "omer_sqa", "rotem24");
 					strConn = string.Format("Server='{0}'; database='{1}'; UID='{2}'; password='{3}'", "127.0.0.1", "const_hours", "omer_sqa", "rotem24");
-				m_database = new MySqlConnection(strConn);
+				try {
+					m_database = new MySqlConnection(strConn);
+				}
+				catch(Exception ex) {
+					MessageBox.Show(ex.Message);
+				}
 				try {
 					m_database.Open();
 					m_cmd = new MySqlCommand();
 					m_cmd.Connection = m_database;
 
 					//MessageBox.Show("Connected");
-				} catch(Exception ex) {
+				}
+				catch(Exception ex) {
 					MessageBox.Show(ex.Message);
 				}
 			}

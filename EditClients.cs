@@ -19,15 +19,15 @@ namespace WorkHours {
 	public partial class DlgEditClients : Form {
 		private MySqlCommand m_cmd;
 		string m_strErr = "";
-		//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 		public DlgEditClients() {
-		InitializeComponent();
+			InitializeComponent();
 		}
 //------------------------------------------------------------------------------
 		public bool Execute(MySqlCommand cmd) {
 			bool fEdit;
-			
-			if ((fEdit = Download(cmd)) == true) {
+
+			if((fEdit = Download(cmd)) == true) {
 				fEdit = ShowDialog() == DialogResult.OK;
 				if(fEdit)
 					Upload();
@@ -40,48 +40,47 @@ namespace WorkHours {
 			m_cmd = cmd;
 			TClients clients = new TClients();
 			lboxClients.Items.Clear();
-			if ((fDownload = clients.LoadFromDB(cmd, ref m_strErr)) == true) {
-				for(int n = 0; n < clients.Items.Length ; n++)
+			if((fDownload = clients.LoadFromDB(cmd, ref m_strErr)) == true) {
+				for(int n = 0; n < clients.Items.Length; n++)
 					lboxClients.Items.Add(clients.Items[n]);
-			}
-			else
+			} else
 				MessageBox.Show(m_strErr);
 			return (fDownload);
 		}
 //------------------------------------------------------------------------------
 		private void Upload() {
 			TClients clients = UploadClients();
-			int id=0;
+			int id = 0;
 
-			if (clients != null)
-				clients.SaveToDB (m_cmd, ref m_strErr);
-/*
-				for (int n = 0; n < clients.Items.Length ; n++) {
-					TClient client = (TClient) clients.Items[n];
-					if (client != null) {
-						if (client.ID > 0) {
-							if (!client.UpdateInDB (m_cmd, ref m_strErr))
-								MessageBox.Show (m_strErr);
+			if(clients != null)
+				clients.SaveToDB(m_cmd, ref m_strErr);
+			/*
+							for (int n = 0; n < clients.Items.Length ; n++) {
+								TClient client = (TClient) clients.Items[n];
+								if (client != null) {
+									if (client.ID > 0) {
+										if (!client.UpdateInDB (m_cmd, ref m_strErr))
+											MessageBox.Show (m_strErr);
+									}
+									else {
+										if (client.InsertAsNew (m_cmd, ref id,ref m_strErr))
+											client.ID = id;
+										else
+											MessageBox.Show (m_strErr);
+									}
+								}
+							}
+			*/
+			/*
+							if (clientList != null)
+							foreach (var kvp in clientList)
+								TClient client = (TClient) kvp;
+							nMinID = Math.Min(nMinID, kvp.Key);
+							for (int n = 0; n < clientList.Items.Count ; n++) {
+								TClient client = clientList.Items[n];
+							}
 						}
-						else {
-							if (client.InsertAsNew (m_cmd, ref id,ref m_strErr))
-								client.ID = id;
-							else
-								MessageBox.Show (m_strErr);
-						}
-					}
-				}
-*/
-/*
-				if (clientList != null)
-				foreach (var kvp in clientList)
-					TClient client = (TClient) kvp;
-				nMinID = Math.Min(nMinID, kvp.Key);
-				for (int n = 0; n < clientList.Items.Count ; n++) {
-					TClient client = clientList.Items[n];
-				}
-			}
-*/
+			*/
 		}
 //------------------------------------------------------------------------------
 		private void btnOK_Click(object sender, EventArgs e) {
@@ -91,11 +90,33 @@ namespace WorkHours {
 		private void DlgEditClients_Load(object sender, EventArgs e) {
 			Application.Idle += OnIdle;
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
-		//
+			/*
+						TClient clientLB = UploadLBoxClient(), clientTxt = UploadFromText();
+						if (clientTxt != null) {
+							int idx = FindClientByID (clientTxt.ID);
+							if (idx >= 0)
+								lboxClients.Items[idx] = clientTxt;
+						}
+						if (clientLB != null)
+							if (clientTxt != null) {
+								if (clientLB.ID != clientTxt.ID)
+									DownloadClient(clientLB);
+							}
+			*/
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
+		private TClient UploadLBoxClient() {
+			TClient client = null;
+			if(lboxClients.Items != null) {
+				if(lboxClients.SelectedItem != null) {
+					client = new TClient((TStringInt)lboxClients.SelectedItem);
+				}
+			}
+			return (client);
+		}
+		//-----------------------------------------------------------------------------
 		private void DlgEditClients_FormClosed(object sender, FormClosedEventArgs e) {
 			Application.Idle -= OnIdle;
 		}
@@ -141,9 +162,8 @@ namespace WorkHours {
 			for(n = 0; (n < lboxClients.Items.Count) && (nFound < 0); n++) {
 				TClient client;
 				try {
-					client = (TClient)lboxClients.Items[n];
-				}
-				catch(Exception e) {
+					client = new TClient((TStringInt)lboxClients.Items[n]);
+				} catch(Exception e) {
 					client = null;
 					Console.WriteLine(e.ToString());
 				}
@@ -155,23 +175,51 @@ namespace WorkHours {
 		}
 //------------------------------------------------------------------------------
 		private TClient NewClient() {
-		//TClient client = new TClient();
+			//TClient client = new TClient();
 			TClients clientList = UploadClients();
-			TClient client = TClient.CreateNewClient(clientList);
+			TClient client = (TClient)TClient.CreateNew(clientList.Items);
 			return (client);
 		}
 //------------------------------------------------------------------------------
 		private TClients UploadClients() {
 			TClients clients = new TClients();
 			clients.Items = new TClient[lboxClients.Items.Count];
-			for(int n = 0; n < lboxClients.Items.Count; n++) {
-				clients.Items[n] = (TClient) lboxClients.Items[n];
+			try {
+				for(int n = 0; n < lboxClients.Items.Count; n++) {
+					TClient client = new TClient();
+					client.AssignAll((TStringInt)lboxClients.Items[n]);
+					clients.Items[n] = new TClient(client);
+				}
+			} catch(Exception e) {
+				MessageBox.Show(e.ToString());
 			}
 			return (clients);
 		}
 //------------------------------------------------------------------------------
 		private void btnUpdate_Click(object sender, EventArgs e) {
 			UpdateCurrent();
+			TClient clientLB = UploadLBoxClient();
+			if(clientLB != null) {
+				DownloadClient(clientLB);
+				txtbxName.Focus();
+			}
+		}
+//------------------------------------------------------------------------------
+		private void btnDelete_Click(object sender, EventArgs e) {
+			TClient clientLB = UploadLBoxClient();
+			TClients clients_list = new TClients();
+			if (clientLB != null) {
+				string str = String.Format("Delete client {0}?", clientLB.Name);
+				if (MessageBox.Show (str, "אישור", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+					if (clients_list.DeleteFromDB (m_cmd, clientLB.ID, ref m_strErr)) {
+						int idx = FindClientByID(clientLB.ID);
+						if (idx >= 0)
+							lboxClients.Items.RemoveAt(idx);
+					}
+					else
+						MessageBox.Show(m_strErr);
+				}
+			}
 		}
 //------------------------------------------------------------------------------
 	}

@@ -26,19 +26,9 @@ namespace WorkHours {
 //------------------------------------------------------------------------------
 		public TClient (TClient other) : base(other) { }
 //------------------------------------------------------------------------------
-		public static string GetNewName(TClient client) {
-			int n = Math.Abs (client.ID);
-			string str = "Client " + n.ToString();
-			return (str);
-		}
-//------------------------------------------------------------------------------
-		public static TClient CreateNewClient (TClients clients) {
-			TClient client = new TClient ();
-			client.ID = TClient.GetMinID (clients.Items);
-			if (client.ID == 0)
-				client.ID = -1;
-			client.Name = GetNewName(client);
-			return (client);
+		public TClient (TStringInt si) {
+			ID   = si.ID;
+			Name = si.Name;
 		}
 	}
 }
