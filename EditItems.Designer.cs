@@ -1,5 +1,5 @@
 ﻿namespace WorkHours {
-	partial class DlgEditClients {
+	partial class DlgEditItems {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -23,7 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			lboxClients = new ListBox();
+			lboxItems = new ListBox();
 			label1 = new Label();
 			btnCancel = new Button();
 			btnOK = new Button();
@@ -33,14 +33,14 @@
 			btnDelete = new Button();
 			SuspendLayout();
 			// 
-			// lboxClients
+			// lboxItems
 			// 
-			lboxClients.FormattingEnabled = true;
-			lboxClients.ItemHeight = 15;
-			lboxClients.Location = new Point(84, 29);
-			lboxClients.Name = "lboxClients";
-			lboxClients.Size = new Size(183, 109);
-			lboxClients.TabIndex = 0;
+			lboxItems.FormattingEnabled = true;
+			lboxItems.ItemHeight = 15;
+			lboxItems.Location = new Point(84, 29);
+			lboxItems.Name = "lboxItems";
+			lboxItems.Size = new Size(183, 109);
+			lboxItems.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -111,7 +111,7 @@
 			btnDelete.UseVisualStyleBackColor = true;
 			btnDelete.Click += btnDelete_Click;
 			// 
-			// DlgEditClients
+			// DlgEditItems
 			// 
 			AcceptButton = btnOK;
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -125,22 +125,22 @@
 			Controls.Add(btnCancel);
 			Controls.Add(btnOK);
 			Controls.Add(label1);
-			Controls.Add(lboxClients);
+			Controls.Add(lboxItems);
 			MaximizeBox = false;
 			MinimizeBox = false;
-			Name = "DlgEditClients";
+			Name = "DlgEditItems";
 			RightToLeft = RightToLeft.Yes;
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "לקוחות";
-			FormClosed += DlgEditClients_FormClosed;
-			Load += DlgEditClients_Load;
+			FormClosed += DlgEditItems_FormClosed;
+			Load += DlgEditItems_Load_1;
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
 
-		private ListBox lboxClients;
+		private ListBox lboxItems;
 		private Label label1;
 		private Button btnCancel;
 		private Button btnOK;
