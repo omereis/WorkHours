@@ -41,12 +41,11 @@ namespace WorkHours {
 		private bool Download(MySqlCommand cmd, TStringIntListDB listDB) {
 			bool fDownload;
 
+			Text = listDB.Title;
 			m_cmd = cmd;
 			m_listDB = listDB;
-			//TClients clients = new TClients();
 			lboxItems.Items.Clear();
 			if((fDownload = m_listDB.LoadFromDB(cmd, ref m_strErr)) == true) {
-				//if((fDownload = clients.LoadFromDB(cmd, ref m_strErr)) == true) {
 				for(int n = 0; n < m_listDB.Items.Length; n++)
 					lboxItems.Items.Add(m_listDB.Items[n]);
 			} else
@@ -58,35 +57,7 @@ namespace WorkHours {
 			UploadItems();
 			int id = 0;
 
-			//if(clients != null)
 			m_listDB.SaveToDB(m_cmd, ref m_strErr);
-			/*
-							for (int n = 0; n < clients.Items.Length ; n++) {
-								TClient client = (TClient) clients.Items[n];
-								if (client != null) {
-									if (client.ID > 0) {
-										if (!client.UpdateInDB (m_cmd, ref m_strErr))
-											MessageBox.Show (m_strErr);
-									}
-									else {
-										if (client.InsertAsNew (m_cmd, ref id,ref m_strErr))
-											client.ID = id;
-										else
-											MessageBox.Show (m_strErr);
-									}
-								}
-							}
-			*/
-			/*
-							if (clientList != null)
-							foreach (var kvp in clientList)
-								TClient client = (TClient) kvp;
-							nMinID = Math.Min(nMinID, kvp.Key);
-							for (int n = 0; n < clientList.Items.Count ; n++) {
-								TClient client = clientList.Items[n];
-							}
-						}
-			*/
 		}
 //------------------------------------------------------------------------------
 		private void btnOK_Click(object sender, EventArgs e) {
@@ -113,9 +84,7 @@ namespace WorkHours {
 //------------------------------------------------------------------------------
 		private void btnNew_Click(object sender, EventArgs e) {
 			UpdateCurrent();
-			//			TStringIntListDB lst = UploadItems
 			TStringInt si = NewItem();
-			//TClient client = 
 			if(si != null) {
 				DownloadItem(si);
 				lboxItems.Items.Add(si);
@@ -152,38 +121,33 @@ namespace WorkHours {
 			int n, nFound = -1;
 
 			for(n = 0; (n < lboxItems.Items.Count) && (nFound < 0); n++) {
-				TClient client;
+				TStringInt si;
 				try {
-					client = new TClient((TStringInt)lboxItems.Items[n]);
+					si = (TStringInt) lboxItems.Items[n];
 				} catch(Exception e) {
-					client = null;
+					si = null;
 					Console.WriteLine(e.ToString());
 				}
-				if(client != null)
-					if(client.ID == id)
+				if(si != null)
+					if(si.ID == id)
 						nFound = n;
 			}
 			return (nFound);
 		}
 //------------------------------------------------------------------------------
 		private TStringInt NewItem() {
-			//TClient client = new TClient();
 			TStringIntListDB items = UploadItems();
 			TStringInt si = m_listDB.CreateNewItem();
 			return (si);
 		}
 //------------------------------------------------------------------------------
 		private TStringIntListDB UploadItems() {
-			//TStringIntListDB items = new TStringIntListDB(m_listDB);
 			ArrayList al = new ArrayList();
-			//m_listDB.ClearItems();
-			//clients.Items = new TClient[lboxClients.Items.Count];
 			try {
 				for(int n = 0; n < lboxItems.Items.Count; n++) {
-					//TClient client = new TClient();
 					TStringInt si = new TStringInt();
-					si.AssignAll((TStringInt)lboxItems.Items[n]);
-					al.Add(new TClient(si));
+					si.AssignAll ((TStringInt) lboxItems.Items[n]);
+					al.Add(new TStringInt(si));
 				}
 			} catch(Exception e) {
 				MessageBox.Show(e.ToString());
@@ -199,11 +163,11 @@ namespace WorkHours {
 				DownloadItem(si);
 				txtbxName.Focus();
 			}
+			txtbxName.ReadOnly = txtbxName.ReadOnly ? false : true;
 		}
 //------------------------------------------------------------------------------
 		private void btnDelete_Click(object sender, EventArgs e) {
 			TStringInt siLB = UploadLBoxItem();
-			TClients clients_list = new TClients();
 			if(siLB != null) {
 				string str = String.Format("Delete client {0}?", siLB.Name);
 				if(MessageBox.Show(str, "אישור", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
@@ -234,5 +198,3 @@ namespace WorkHours {
 //------------------------------------------------------------------------------
 	}
 }
-//UploadItems
-//			Application.Idle += OnIdle;

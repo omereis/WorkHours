@@ -37,7 +37,7 @@
 			// 
 			lboxItems.FormattingEnabled = true;
 			lboxItems.ItemHeight = 15;
-			lboxItems.Location = new Point(84, 29);
+			lboxItems.Location = new Point(58, 12);
 			lboxItems.Name = "lboxItems";
 			lboxItems.Size = new Size(183, 109);
 			lboxItems.TabIndex = 0;
@@ -45,7 +45,7 @@
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Location = new Point(243, 154);
+			label1.Location = new Point(217, 133);
 			label1.Name = "label1";
 			label1.Size = new Size(24, 15);
 			label1.TabIndex = 1;
@@ -55,7 +55,7 @@
 			// 
 			btnCancel.Image = Properties.Resources.Cancel16;
 			btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-			btnCancel.Location = new Point(156, 264);
+			btnCancel.Location = new Point(166, 251);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(75, 23);
 			btnCancel.TabIndex = 9;
@@ -66,7 +66,7 @@
 			// 
 			btnOK.Image = Properties.Resources.ok16;
 			btnOK.ImageAlign = ContentAlignment.MiddleLeft;
-			btnOK.Location = new Point(44, 264);
+			btnOK.Location = new Point(54, 251);
 			btnOK.Name = "btnOK";
 			btnOK.Size = new Size(75, 23);
 			btnOK.TabIndex = 8;
@@ -76,14 +76,15 @@
 			// 
 			// txtbxName
 			// 
-			txtbxName.Location = new Point(84, 172);
+			txtbxName.Location = new Point(58, 151);
 			txtbxName.Name = "txtbxName";
+			txtbxName.ReadOnly = true;
 			txtbxName.Size = new Size(183, 23);
 			txtbxName.TabIndex = 10;
 			// 
 			// btnNew
 			// 
-			btnNew.Location = new Point(220, 205);
+			btnNew.Location = new Point(199, 204);
 			btnNew.Name = "btnNew";
 			btnNew.Size = new Size(75, 23);
 			btnNew.TabIndex = 11;
@@ -93,7 +94,7 @@
 			// 
 			// btnUpdate
 			// 
-			btnUpdate.Location = new Point(127, 205);
+			btnUpdate.Location = new Point(106, 204);
 			btnUpdate.Name = "btnUpdate";
 			btnUpdate.Size = new Size(75, 23);
 			btnUpdate.TabIndex = 12;
@@ -103,7 +104,7 @@
 			// 
 			// btnDelete
 			// 
-			btnDelete.Location = new Point(44, 205);
+			btnDelete.Location = new Point(23, 204);
 			btnDelete.Name = "btnDelete";
 			btnDelete.Size = new Size(75, 23);
 			btnDelete.TabIndex = 13;
@@ -117,7 +118,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(304, 315);
+			ClientSize = new Size(304, 282);
 			Controls.Add(btnDelete);
 			Controls.Add(btnUpdate);
 			Controls.Add(btnNew);
