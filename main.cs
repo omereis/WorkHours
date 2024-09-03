@@ -43,8 +43,7 @@ namespace WorkHours {
 					strConn = string.Format("Server='{0}'; database='{1}'; UID='{2}'; password='{3}'", "127.0.0.1", "const_hours", "omer_sqa", "rotem24");
 				try {
 					m_database = new MySqlConnection(strConn);
-				}
-				catch(Exception ex) {
+				} catch(Exception ex) {
 					MessageBox.Show(ex.Message);
 				}
 				try {
@@ -53,24 +52,23 @@ namespace WorkHours {
 					m_cmd.Connection = m_database;
 
 					//MessageBox.Show("Connected");
-				}
-				catch(Exception ex) {
+				} catch(Exception ex) {
 					MessageBox.Show(ex.Message);
 				}
 			}
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
 			UpdateStatusBar();
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private void UpdateStatusBar() {
 			if(IsDatabaseConnected())
 				sblblDatabase.Text = m_database.Database + " Connected";
 			else
 				sblblDatabase.Text = "Database Disconnected";
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private bool IsDatabaseConnected() {
 			bool fOpen = false;
 
@@ -102,48 +100,10 @@ namespace WorkHours {
 			}
 		}
 //------------------------------------------------------------------------------
-		private void button1_Click(object sender, EventArgs e) {
-			if(dlgIni.ShowDialog() == DialogResult.OK) {
-				TIniFile ini = new TIniFile(dlgIni.FileName);
-				string[] astr = ini.Sections();
-				trv.Nodes.Clear();
-				if(astr != null) {
-					for(int n = 0; n < astr.Length; n++) {
-						trv.Nodes.Add(astr[n]);
-					}
-				}
-			}
-		}
-//------------------------------------------------------------------------------
-		private void button2_Click(object sender, EventArgs e) {
-			TreeNode node = trv.SelectedNode;
-			TIniFile ini = new TIniFile(dlgIni.FileName);
-
-			lstbx.Items.Clear();
-			if(node == null)
-				txtbx.Text = "";
-			else {
-				txtbx.Text = node.Text.Trim();
-				string[] astr = ini.Keys(node.Text.Trim());
-				for(int n = 0; n < astr?.Length; n++)
-					lstbx.Items.Add(astr[n]);
-			}
-		}
-//------------------------------------------------------------------------------
 		private string GetIniName() {
 			string str = Environment.GetCommandLineArgs()[0];//Application.StartupPath;
 			string strIni = Path.ChangeExtension(str, ".ini");
 			return (strIni);
-		}
-//------------------------------------------------------------------------------
-		private void button4_Click(object sender, EventArgs e) {
-			TIniFile ini = new TIniFile(GetIniName());
-			string strDB = ini.ReadString("Database", "Production");
-
-		}
-
-		private void button5_Click(object sender, EventArgs e) {
-			txtbxIni.Text = GetIniName();
 		}
 //------------------------------------------------------------------------------
 		private double CheckInternewtTime() {
@@ -163,9 +123,14 @@ namespace WorkHours {
 			return Math.Round((data.Length / 1024) / (dt2 - dt1).TotalSeconds, 2);
 		}
 //------------------------------------------------------------------------------
-		private void miClients_Click(object sender, EventArgs e) {
-			DlgEditClients dlg = new DlgEditClients();
-			dlg.Execute(m_cmd);
+		private void miClients_Click_1(object sender, EventArgs e) {
+			DlgEditItems dlg = new DlgEditItems();
+			dlg.Execute(m_cmd, new TClients());
+		}
+//------------------------------------------------------------------------------
+		private void miSubjects_Click(object sender, EventArgs e) {
+			DlgEditItems dlg = new DlgEditItems();
+			dlg.Execute(m_cmd, new TSubjects());
 		}
 //------------------------------------------------------------------------------
 	}

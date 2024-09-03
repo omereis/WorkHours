@@ -27,35 +27,37 @@
 			popupFile = new ToolStripMenuItem();
 			miDatabase = new ToolStripMenuItem();
 			miFileExit = new ToolStripMenuItem();
+			popupSupport = new ToolStripMenuItem();
 			miClients = new ToolStripMenuItem();
+			miSubjects = new ToolStripMenuItem();
 			status_bar = new StatusStrip();
 			sblblDatabase = new ToolStripStatusLabel();
 			dlgIni = new OpenFileDialog();
-			button1 = new Button();
-			trv = new TreeView();
-			button2 = new Button();
-			txtbx = new TextBox();
-			lstbx = new ListBox();
-			button3 = new Button();
-			button4 = new Button();
-			txtbxIni = new TextBox();
-			button5 = new Button();
+			gridHours = new DataGridView();
+			Column1 = new DataGridViewTextBoxColumn();
+			Column2 = new DataGridViewTextBoxColumn();
+			Column3 = new DataGridViewTextBoxColumn();
+			Column4 = new DataGridViewTextBoxColumn();
+			Column6 = new DataGridViewTextBoxColumn();
+			Column7 = new DataGridViewTextBoxColumn();
+			Column8 = new DataGridViewTextBoxColumn();
 			menuMain.SuspendLayout();
 			status_bar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)gridHours).BeginInit();
 			SuspendLayout();
 			// 
 			// menuMain
 			// 
-			menuMain.Items.AddRange(new ToolStripItem[] { popupFile });
+			menuMain.Items.AddRange(new ToolStripItem[] { popupFile, popupSupport });
 			menuMain.Location = new Point(0, 0);
 			menuMain.Name = "menuMain";
-			menuMain.Size = new Size(680, 24);
+			menuMain.Size = new Size(970, 24);
 			menuMain.TabIndex = 0;
 			menuMain.Text = "menuStrip1";
 			// 
 			// popupFile
 			// 
-			popupFile.DropDownItems.AddRange(new ToolStripItem[] { miDatabase, miFileExit, miClients });
+			popupFile.DropDownItems.AddRange(new ToolStripItem[] { miDatabase, miFileExit });
 			popupFile.Name = "popupFile";
 			popupFile.Size = new Size(44, 20);
 			popupFile.Text = "קובץ";
@@ -63,30 +65,45 @@
 			// miDatabase
 			// 
 			miDatabase.Name = "miDatabase";
-			miDatabase.Size = new Size(180, 22);
+			miDatabase.Size = new Size(141, 22);
 			miDatabase.Text = "מסד נתונים...";
 			miDatabase.Click += miDatabase_Click;
 			// 
 			// miFileExit
 			// 
 			miFileExit.Name = "miFileExit";
-			miFileExit.Size = new Size(180, 22);
+			miFileExit.Size = new Size(141, 22);
 			miFileExit.Text = "יציאה";
 			miFileExit.Click += miFileExit_Click;
+			// 
+			// popupSupport
+			// 
+			popupSupport.DropDownItems.AddRange(new ToolStripItem[] { miClients, miSubjects });
+			popupSupport.Name = "popupSupport";
+			popupSupport.Size = new Size(65, 20);
+			popupSupport.Text = "נתוני עזר";
 			// 
 			// miClients
 			// 
 			miClients.Name = "miClients";
 			miClients.Size = new Size(180, 22);
 			miClients.Text = "לקוחות...";
-			miClients.Click += miClients_Click;
+			miClients.Click += miClients_Click_1;
+			// 
+			// miSubjects
+			// 
+			miSubjects.Name = "miSubjects";
+			miSubjects.Size = new Size(180, 22);
+			miSubjects.Text = "נושאי עבודה...";
+			miSubjects.Click += miSubjects_Click;
 			// 
 			// status_bar
 			// 
 			status_bar.Items.AddRange(new ToolStripItem[] { sblblDatabase });
 			status_bar.Location = new Point(0, 383);
 			status_bar.Name = "status_bar";
-			status_bar.Size = new Size(680, 22);
+			status_bar.RightToLeft = RightToLeft.No;
+			status_bar.Size = new Size(970, 22);
 			status_bar.TabIndex = 1;
 			status_bar.Text = "statusStrip1";
 			// 
@@ -101,103 +118,63 @@
 			dlgIni.DefaultExt = "*.ini";
 			dlgIni.Filter = "ini files (*.ini)|*.ini|All files (*.*)|*.*";
 			// 
-			// button1
+			// gridHours
 			// 
-			button1.Location = new Point(92, 74);
-			button1.Name = "button1";
-			button1.Size = new Size(111, 23);
-			button1.TabIndex = 2;
-			button1.Text = "Sections from File";
-			button1.UseVisualStyleBackColor = true;
-			button1.Click += button1_Click;
+			gridHours.AllowUserToAddRows = false;
+			gridHours.AllowUserToDeleteRows = false;
+			gridHours.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			gridHours.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column6, Column7, Column8 });
+			gridHours.EditMode = DataGridViewEditMode.EditProgrammatically;
+			gridHours.Location = new Point(206, 38);
+			gridHours.MultiSelect = false;
+			gridHours.Name = "gridHours";
+			gridHours.RowHeadersVisible = false;
+			gridHours.Size = new Size(752, 309);
+			gridHours.TabIndex = 2;
 			// 
-			// trv
+			// Column1
 			// 
-			trv.Location = new Point(264, 24);
-			trv.Name = "trv";
-			trv.Size = new Size(197, 181);
-			trv.TabIndex = 3;
+			Column1.HeaderText = "תאריך";
+			Column1.Name = "Column1";
 			// 
-			// button2
+			// Column2
 			// 
-			button2.Location = new Point(106, 245);
-			button2.Name = "button2";
-			button2.Size = new Size(75, 23);
-			button2.TabIndex = 4;
-			button2.Text = "button2";
-			button2.UseVisualStyleBackColor = true;
-			button2.Click += button2_Click;
+			Column2.HeaderText = "התחלה";
+			Column2.Name = "Column2";
 			// 
-			// txtbx
+			// Column3
 			// 
-			txtbx.Location = new Point(142, 207);
-			txtbx.Name = "txtbx";
-			txtbx.RightToLeft = RightToLeft.No;
-			txtbx.Size = new Size(100, 23);
-			txtbx.TabIndex = 5;
+			Column3.HeaderText = "סיום";
+			Column3.Name = "Column3";
 			// 
-			// lstbx
+			// Column4
 			// 
-			lstbx.FormattingEnabled = true;
-			lstbx.ItemHeight = 15;
-			lstbx.Location = new Point(264, 220);
-			lstbx.Name = "lstbx";
-			lstbx.RightToLeft = RightToLeft.No;
-			lstbx.Size = new Size(197, 94);
-			lstbx.TabIndex = 6;
+			Column4.HeaderText = "שעות";
+			Column4.Name = "Column4";
 			// 
-			// button3
+			// Column6
 			// 
-			button3.Location = new Point(502, 82);
-			button3.Name = "button3";
-			button3.Size = new Size(104, 23);
-			button3.TabIndex = 7;
-			button3.Text = "read database";
-			button3.UseVisualStyleBackColor = true;
+			Column6.HeaderText = "אישור";
+			Column6.Name = "Column6";
 			// 
-			// button4
+			// Column7
 			// 
-			button4.Location = new Point(502, 120);
-			button4.Name = "button4";
-			button4.Size = new Size(104, 23);
-			button4.TabIndex = 8;
-			button4.Text = "save database";
-			button4.UseVisualStyleBackColor = true;
-			button4.Click += button4_Click;
+			Column7.HeaderText = "תשלום";
+			Column7.Name = "Column7";
 			// 
-			// txtbxIni
+			// Column8
 			// 
-			txtbxIni.Location = new Point(11, 345);
-			txtbxIni.Name = "txtbxIni";
-			txtbxIni.Size = new Size(595, 23);
-			txtbxIni.TabIndex = 9;
-			// 
-			// button5
-			// 
-			button5.Location = new Point(69, 316);
-			button5.Name = "button5";
-			button5.Size = new Size(75, 23);
-			button5.TabIndex = 10;
-			button5.Text = "ini";
-			button5.UseVisualStyleBackColor = true;
-			button5.Click += button5_Click;
+			Column8.HeaderText = "דיווח";
+			Column8.Name = "Column8";
 			// 
 			// main
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(680, 405);
-			Controls.Add(button5);
-			Controls.Add(button1);
-			Controls.Add(txtbxIni);
+			ClientSize = new Size(970, 405);
+			Controls.Add(gridHours);
 			Controls.Add(status_bar);
-			Controls.Add(trv);
 			Controls.Add(menuMain);
-			Controls.Add(button4);
-			Controls.Add(lstbx);
-			Controls.Add(button2);
-			Controls.Add(txtbx);
-			Controls.Add(button3);
 			MainMenuStrip = menuMain;
 			Name = "main";
 			RightToLeft = RightToLeft.Yes;
@@ -207,6 +184,7 @@
 			menuMain.PerformLayout();
 			status_bar.ResumeLayout(false);
 			status_bar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)gridHours).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -220,15 +198,16 @@
 		private StatusStrip status_bar;
 		private ToolStripStatusLabel sblblDatabase;
 		private OpenFileDialog dlgIni;
-		private Button button1;
-		private TreeView trv;
-		private Button button2;
-		private TextBox txtbx;
-		private ListBox lstbx;
-		private Button button3;
-		private Button button4;
-		private TextBox txtbxIni;
-		private Button button5;
+		private DataGridView gridHours;
+		private DataGridViewTextBoxColumn Column1;
+		private DataGridViewTextBoxColumn Column2;
+		private DataGridViewTextBoxColumn Column3;
+		private DataGridViewTextBoxColumn Column4;
+		private DataGridViewTextBoxColumn Column6;
+		private DataGridViewTextBoxColumn Column7;
+		private DataGridViewTextBoxColumn Column8;
+		private ToolStripMenuItem popupSupport;
 		private ToolStripMenuItem miClients;
+		private ToolStripMenuItem miSubjects;
 	}
 }
