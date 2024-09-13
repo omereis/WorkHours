@@ -5,6 +5,7 @@ MySQL - 5.7.44-log
 */
 /*!40101 SET NAMES utf8 */;
 
+use const_hours;
 create table `tblclients` (
 	`client_id` int (11),
 	`client_name` varchar (150),

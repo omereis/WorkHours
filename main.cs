@@ -15,11 +15,23 @@ using System.Net.NetworkInformation;
 using System.Diagnostics;
 using System.Linq;
 using OmerEisCommon;
+using System.Text.RegularExpressions;
+using System.Collections;
 //-----------------------------------------------------------------------------
 namespace WorkHours {
 	public partial class main : Form {
 		private MySqlConnection m_database;
 		private MySqlCommand m_cmd;
+		private string m_strErr = "";
+//------------------------------------------------------------------------------
+		public static readonly int colStartDate = 1;
+		public static readonly int colStartTime = 2;
+		public static readonly int colEndDate = 3;
+		public static readonly int colEndTime = 4;
+		public static readonly int colSubjects = 5;
+		public static readonly int colOutputs = 6;
+		public static readonly int colHours = 7;
+//------------------------------------------------------------------------------
 		public main() {
 			InitializeComponent();
 		}
@@ -30,6 +42,12 @@ namespace WorkHours {
 //------------------------------------------------------------------------------
 		private void main_Load(object sender, EventArgs e) {
 			Application.Idle += OnIdle;
+			ConnectToDB();
+			if(m_database != null)
+				LoadWorkHours();
+		}
+//------------------------------------------------------------------------------
+		private void ConnectToDB() {
 			if(m_database == null) {
 				TIniFile ini = new TIniFile(GetIniName());
 				string strDB = ini.ReadString("Database", "Production");
@@ -57,18 +75,18 @@ namespace WorkHours {
 				}
 			}
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
 			UpdateStatusBar();
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void UpdateStatusBar() {
 			if(IsDatabaseConnected())
 				sblblDatabase.Text = m_database.Database + " Connected";
 			else
 				sblblDatabase.Text = "Database Disconnected";
 		}
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private bool IsDatabaseConnected() {
 			bool fOpen = false;
 
@@ -131,6 +149,103 @@ namespace WorkHours {
 		private void miSubjects_Click(object sender, EventArgs e) {
 			DlgEditItems dlg = new DlgEditItems();
 			dlg.Execute(m_cmd, new TSubjects());
+		}
+//------------------------------------------------------------------------------
+		private void miOutputs_Click(object sender, EventArgs e) {
+			DlgEditItems dlg = new DlgEditItems();
+			dlg.Execute(m_cmd, new TOutputs());
+		}
+//------------------------------------------------------------------------------
+		private void miHoursNew_Click(object sender, EventArgs e) {
+			bool f = true;
+			DlgEditHours dlg = new DlgEditHours();
+			TWorkHoursInfo wh = new TWorkHoursInfo();
+			if((f = wh.InsertAsNew(m_cmd, ref m_strErr)) == true) {
+				AddWorkHours(wh);
+				if(dlg.Execute(m_cmd, wh))
+					if((f = wh.UpdateInDB(m_cmd, ref m_strErr)) == true)
+						UpdateWorkHours(wh);
+			}
+			if(!f) {
+				MessageBox.Show(m_strErr);
+				if(!wh.DeleteFromDB(m_cmd, ref m_strErr))
+					MessageBox.Show(m_strErr);
+			}
+		}
+//------------------------------------------------------------------------------
+		private void AddWorkHours(TWorkHoursInfo wh) {
+			if(wh != null) {
+				int row = FindWhByID(wh.ID);
+				if(row < 0)
+					row = gridHours.Rows.Add();
+				DownloadToRow(wh, row);
+			}
+		}
+//------------------------------------------------------------------------------
+		private void UpdateWorkHours(TWorkHoursInfo wh) {
+			if(wh != null) {
+				int row = FindWhByID(wh.ID);
+				if(row >= 0)
+					DownloadToRow(wh, row);
+			}
+		}
+
+//------------------------------------------------------------------------------
+		private int FindWhByID(int id) {
+			int rFound = -1;
+
+			for(int n = 0; (n < gridHours.Rows.Count) && (rFound < 0); n++) {
+				if(gridHours.Rows[n].Cells[0].Tag != null) {
+					TWorkHoursInfo wh;
+					try {
+						wh = (TWorkHoursInfo)gridHours.Rows[n].Cells[0].Tag;
+						if(wh.ID == id)
+							rFound = n;
+					} catch {
+					}
+				}
+			}
+			return (rFound);
+		}
+//------------------------------------------------------------------------------
+		private void DownloadToRow(TWorkHoursInfo wh, int row) {
+			if((wh != null) && (row >= 0) && (row < gridHours.Rows.Count)) {
+				gridHours.Rows[row].Cells[0].Tag = wh;
+				gridHours.Rows[row].Cells[colStartDate].Value = TMisc.GetDateString(wh.Start);
+				gridHours.Rows[row].Cells[colStartTime].Value = TMisc.GetTimeString(wh.Start);//Value.ToShortTimeString();
+				gridHours.Rows[row].Cells[colEndDate].Value = TMisc.GetDateString(wh.End);//.Value.ToShortDateString();
+				gridHours.Rows[row].Cells[colEndTime].Value = TMisc.GetTimeString(wh.End);//.Value.ToShortTimeString();
+				gridHours.Rows[row].Cells[colSubjects].Value = wh.GetSubjectName();
+				gridHours.Rows[row].Cells[colOutputs].Value = wh.GetOutputsNames();
+				gridHours.Rows[row].Cells[colHours].Value = wh.GetWorkHours();
+			}
+		}
+
+		private void button1_Click(object sender, EventArgs e) {
+			LoadWorkHours();
+			textBox2.Text = Regex.Replace(textBox1.Text, "'", "''");
+		}
+//------------------------------------------------------------------------------
+		private void LoadWorkHours() {
+			TWorkHoursInfo[] aWorkHours=null;
+			if (m_cmd != null) {
+				if (TWorkHoursInfo.LoadAll (m_cmd, ref aWorkHours, ref m_strErr))
+					DownloadWorkHours (aWorkHours);
+				else
+					MessageBox.Show (m_strErr);
+			}
+		}
+//------------------------------------------------------------------------------
+		private void DownloadWorkHours (TWorkHoursInfo[] aWorkHours) {
+			gridHours.Rows.Clear ();
+			gridHours.Rows.Add (aWorkHours.Length);
+			for (int n=0 ; n < aWorkHours.Length ; n++)
+				DownloadToRow (aWorkHours[n], n);
+		}
+//------------------------------------------------------------------------------
+		private void main_FormClosed(object sender, FormClosedEventArgs e) {
+			if (m_database != null)
+				m_database.Close();
 		}
 //------------------------------------------------------------------------------
 	}
