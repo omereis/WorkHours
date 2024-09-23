@@ -23,7 +23,7 @@ namespace WorkHours {
 		private MySqlConnection m_database;
 		private MySqlCommand m_cmd;
 		private string m_strErr = "";
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		public static readonly int colStartDate = 1;
 		public static readonly int colStartTime = 2;
 		public static readonly int colEndDate = 3;
@@ -31,22 +31,22 @@ namespace WorkHours {
 		public static readonly int colSubjects = 5;
 		public static readonly int colOutputs = 6;
 		public static readonly int colHours = 7;
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		public main() {
 			InitializeComponent();
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miFileExit_Click(object sender, EventArgs e) {
 			Close();
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void main_Load(object sender, EventArgs e) {
 			Application.Idle += OnIdle;
 			ConnectToDB();
 			if(m_database != null)
 				LoadWorkHours();
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void ConnectToDB() {
 			if(m_database == null) {
 				TIniFile ini = new TIniFile(GetIniName());
@@ -75,18 +75,18 @@ namespace WorkHours {
 				}
 			}
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private void OnIdle(object sender, EventArgs e) {
 			UpdateStatusBar();
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private void UpdateStatusBar() {
 			if(IsDatabaseConnected())
 				sblblDatabase.Text = m_database.Database + " Connected";
 			else
 				sblblDatabase.Text = "Database Disconnected";
 		}
-//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
 		private bool IsDatabaseConnected() {
 			bool fOpen = false;
 
@@ -95,7 +95,7 @@ namespace WorkHours {
 					fOpen = true;
 			return (fOpen);
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miDatabase_Click(object sender, EventArgs e) {
 			TDBParams db_params = new TDBParams();
 			TIniFile ini = new TIniFile(GetIniName());
@@ -117,13 +117,13 @@ namespace WorkHours {
 				ini.WriteString("Database", "Production", db_params.ToJson());// .GetConnectionString());
 			}
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private string GetIniName() {
 			string str = Environment.GetCommandLineArgs()[0];//Application.StartupPath;
 			string strIni = Path.ChangeExtension(str, ".ini");
 			return (strIni);
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private double CheckInternewtTime() {
 			// Create Object Of WebClient
 			System.Net.WebClient wc = new System.Net.WebClient();
@@ -140,29 +140,34 @@ namespace WorkHours {
 			//To Calculate Speed in Kb Divide Value Of data by 1024 And Then by End Time Subtract Start Time To Know Download Per Second.
 			return Math.Round((data.Length / 1024) / (dt2 - dt1).TotalSeconds, 2);
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miClients_Click_1(object sender, EventArgs e) {
 			DlgEditItems dlg = new DlgEditItems();
 			dlg.Execute(m_cmd, new TClients());
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miSubjects_Click(object sender, EventArgs e) {
 			DlgEditItems dlg = new DlgEditItems();
 			dlg.Execute(m_cmd, new TSubjects());
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void miOutputs_Click(object sender, EventArgs e) {
 			DlgEditItems dlg = new DlgEditItems();
 			dlg.Execute(m_cmd, new TOutputs());
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+		private bool EditWorkHours (TWorkHoursInfo wh) {
+			DlgEditHours dlg = new DlgEditHours();
+			return (dlg.Execute(m_cmd, wh));
+		}
+//-----------------------------------------------------------------------------
 		private void miHoursNew_Click(object sender, EventArgs e) {
 			bool f = true;
-			DlgEditHours dlg = new DlgEditHours();
 			TWorkHoursInfo wh = new TWorkHoursInfo();
 			if((f = wh.InsertAsNew(m_cmd, ref m_strErr)) == true) {
 				AddWorkHours(wh);
-				if(dlg.Execute(m_cmd, wh))
+				if (EditWorkHours (wh))
+				//if(dlg.Execute(m_cmd, wh))
 					if((f = wh.UpdateInDB(m_cmd, ref m_strErr)) == true)
 						UpdateWorkHours(wh);
 			}
@@ -172,7 +177,7 @@ namespace WorkHours {
 					MessageBox.Show(m_strErr);
 			}
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void AddWorkHours(TWorkHoursInfo wh) {
 			if(wh != null) {
 				int row = FindWhByID(wh.ID);
@@ -181,7 +186,7 @@ namespace WorkHours {
 				DownloadToRow(wh, row);
 			}
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void UpdateWorkHours(TWorkHoursInfo wh) {
 			if(wh != null) {
 				int row = FindWhByID(wh.ID);
@@ -190,7 +195,7 @@ namespace WorkHours {
 			}
 		}
 
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private int FindWhByID(int id) {
 			int rFound = -1;
 
@@ -207,7 +212,7 @@ namespace WorkHours {
 			}
 			return (rFound);
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void DownloadToRow(TWorkHoursInfo wh, int row) {
 			if((wh != null) && (row >= 0) && (row < gridHours.Rows.Count)) {
 				gridHours.Rows[row].Cells[0].Tag = wh;
@@ -220,33 +225,54 @@ namespace WorkHours {
 				gridHours.Rows[row].Cells[colHours].Value = wh.GetWorkHours();
 			}
 		}
-
+//-----------------------------------------------------------------------------
 		private void button1_Click(object sender, EventArgs e) {
 			LoadWorkHours();
 			textBox2.Text = Regex.Replace(textBox1.Text, "'", "''");
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void LoadWorkHours() {
-			TWorkHoursInfo[] aWorkHours=null;
-			if (m_cmd != null) {
-				if (TWorkHoursInfo.LoadAll (m_cmd, ref aWorkHours, ref m_strErr))
-					DownloadWorkHours (aWorkHours);
+			TWorkHoursInfo[] aWorkHours = null;
+			if(m_cmd != null) {
+				if(TWorkHoursInfo.LoadAll(m_cmd, ref aWorkHours, ref m_strErr))
+					DownloadWorkHours(aWorkHours);
 				else
-					MessageBox.Show (m_strErr);
+					MessageBox.Show(m_strErr);
 			}
 		}
-//------------------------------------------------------------------------------
-		private void DownloadWorkHours (TWorkHoursInfo[] aWorkHours) {
-			gridHours.Rows.Clear ();
-			gridHours.Rows.Add (aWorkHours.Length);
-			for (int n=0 ; n < aWorkHours.Length ; n++)
-				DownloadToRow (aWorkHours[n], n);
+//-----------------------------------------------------------------------------
+		private void DownloadWorkHours(TWorkHoursInfo[] aWorkHours) {
+			gridHours.Rows.Clear();
+			gridHours.Rows.Add(aWorkHours.Length);
+			for(int n = 0; n < aWorkHours.Length; n++)
+				DownloadToRow(aWorkHours[n], n);
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 		private void main_FormClosed(object sender, FormClosedEventArgs e) {
-			if (m_database != null)
+			if(m_database != null)
 				m_database.Close();
 		}
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+		private int LoadCurrentID () {
+			int id = 0;
+			TWorkHoursInfo wh = null;
+
+			if (gridHours.CurrentRow != null)
+				wh = (TWorkHoursInfo) gridHours.CurrentRow.Cells[0].Tag;
+			if (wh != null)
+				id = wh.ID;
+			return (id);
+		}
+//-----------------------------------------------------------------------------
+		private void miHoursEdit_Click(object sender, EventArgs e) {
+			TWorkHoursInfo wh = new TWorkHoursInfo();
+			if ((wh.ID = LoadCurrentID ()) > 0) {
+				if (wh.LoadByID (m_cmd, ref m_strErr)) {
+					if (EditWorkHours (wh))
+						DownloadToRow(wh, gridHours.CurrentRow.Index);
+				}
+			}
+		}
+//-----------------------------------------------------------------------------
 	}
 }
