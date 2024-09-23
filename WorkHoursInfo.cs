@@ -7,6 +7,7 @@ using OmerEisCommon;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,7 +78,7 @@ namespace WorkHours {
 		public string GetSubjectName() {
 			string strName="";
 			if (Subject != null)
-				if (Subject.Items.Length > 0)
+				if (Subject.GetItemsCount() > 0)
 					strName = Subject.Items[0].Name;
 			return (strName);
 		}
@@ -86,9 +87,9 @@ namespace WorkHours {
 			string strName = "";
 
 			if (Outputs != null) {
-				for (int n=0 ; n < Outputs.Items.Length ; n++) {
+				for (int n=0 ; n < Outputs.GetItemsCount() ; n++) {
 					if (n > 0)
-						strName += "\n";
+						strName += ", ";
 					strName += Outputs.Items[n].Name;
 				}
 			}
@@ -122,6 +123,14 @@ namespace WorkHours {
 						aWorkHours[n] = (TWorkHoursInfo) al[n];
 				}
 			}
+			return (fLoad);
+		}
+//------------------------------------------------------------------------------
+		public bool LoadByID (MySqlCommand cmd, ref string strErr) {
+			bool fLoad=false;
+			TWorkHoursInfoDB whdb = new TWorkHoursInfoDB (this);
+			if ((fLoad = whdb.LoadByID (cmd, ref strErr)) == true)
+				AssignAll (whdb);
 			return (fLoad);
 		}
 //------------------------------------------------------------------------------
@@ -164,7 +173,7 @@ namespace WorkHours {
 
 			try {
 				cmd.CommandText = String.Format ("update {0} set {1}='{2}',{3}='{4}'," +
-												"{5}='{6}',{7}={8},{9}={10} " +
+												"{5}='{6}',{7}={8},{9}='{10}' " +
 												"where {11}={12};",
 												Table,
 												FieldStart,TMisc.ReadDateTimeField (Start),
@@ -200,18 +209,115 @@ namespace WorkHours {
 			return (fDel);
 		}
 //------------------------------------------------------------------------------
+/*
+
+*/
+//------------------------------------------------------------------------------
 		public static bool LoadAll (MySqlCommand cmd, ArrayList al, ref string strErr) {
 			bool fLoad;
 			MySqlDataReader reader = null;
 
 			try {
-				TWorkHoursInfoDB whdb = new TWorkHoursInfoDB ();
+				TWorkHoursInfoDB whdb = new TWorkHoursInfoDB (), whdbNew = new TWorkHoursInfoDB ();
+				int idPrev = -1;
 				fLoad = true;
 				cmd.CommandText = String.Format ("select * from {0} order by {1};", View, FieldID);
 				reader = cmd.ExecuteReader ();
 				while ((reader.Read ()) && (fLoad)) {
-					if ((fLoad = whdb.LoadFromReader (reader, ref strErr)) == true)
-						al.Add (new TWorkHoursInfo (whdb));
+					if ((fLoad = whdbNew.LoadIDFromReader (reader, ref strErr)) == true) {
+						if (whdbNew.ID != whdb.ID) {
+							if (whdb.ID > 0) {
+								al.Add (new TWorkHoursInfo (whdb));
+								whdb.Clear ();
+							}
+							whdb.ID = whdbNew.ID;
+							whdb.LoadFromReader (reader, ref strErr, false);
+						}
+						else
+							fLoad = whdb.LoadOutput (reader, ref strErr);
+					}
+				}
+				if (whdb.ID > 0)
+					al.Add (new TWorkHoursInfo (whdb));
+			}
+			catch (Exception e) {
+				strErr = e.Message;
+				fLoad = false;
+			}
+			finally {
+				if (reader != null)
+					reader.Close ();
+			}
+			return (fLoad);
+		}
+//------------------------------------------------------------------------------
+		public bool LoadFromReader (MySqlDataReader reader, ref string strErr, bool fLoadID=true) {
+			bool fRead;
+
+			try {
+				//Clear ();
+				if (fLoadID)
+					ID = TMisc.ReadIntField(reader, FieldID);
+				Desc = TMisc.ReadTextField (reader, FieldDesc, ref strErr);
+				Location = TMisc.ReadTextField (reader, FieldLoc, ref strErr);
+				Start = TMisc.ReadDateTimeField (reader, FieldStart);
+				End =   TMisc.ReadDateTimeField (reader, FieldEnd);
+				if ((fRead = LoadSubject (reader, ref strErr)) == true)
+					fRead = LoadOutput (reader, ref strErr);
+			}
+			catch (Exception e) {
+				fRead =false;
+				if (strErr.Length == 0)
+					strErr = e.Message;
+			}
+			return (fRead);
+		}
+//------------------------------------------------------------------------------
+		private bool LoadSubject (MySqlDataReader reader, ref string strErr) {
+			bool fLoad;
+			if (Subject == null)
+				Subject = new TSubjects ();
+			TStringInt si = new TStringInt();
+			if ((fLoad = Subject.LoadFromReader (si, reader, ref strErr)) == true)
+				Subject.AddItem (si);
+			return (fLoad);
+		}
+//------------------------------------------------------------------------------
+		private bool LoadOutput (MySqlDataReader reader, ref string strErr) {
+			bool fLoad;
+			if (Outputs == null)
+				Outputs= new TOutputs ();
+			TStringInt si = new TStringInt();
+			if ((fLoad = Outputs.LoadFromReader (si, reader, ref strErr)) == true)
+				Outputs.AddItem (si);
+			return (fLoad);
+		}
+//------------------------------------------------------------------------------
+		public bool LoadIDFromReader (MySqlDataReader reader, ref string strErr) {
+			bool fRead;
+
+			try {
+				ID = TMisc.ReadIntField(reader, FieldID);
+				fRead = true;
+			}
+			catch (Exception e) {
+				fRead =false;
+				if (strErr.Length == 0)
+					strErr = e.Message;
+			}
+			return (fRead);
+		}
+//------------------------------------------------------------------------------
+		public new bool LoadByID (MySqlCommand cmd, ref string strErr) {
+			bool fLoad;
+			MySqlDataReader reader = null;
+
+			try {
+				fLoad = true;
+				cmd.CommandText = String.Format ("select * from {0} where {1}={2};", View, FieldID, ID);
+				reader = cmd.ExecuteReader ();
+				if ((reader.Read ()) && (fLoad)) {
+					fLoad = LoadFromReader (reader, ref strErr);
 				}
 			}
 			catch (Exception e) {
@@ -223,27 +329,6 @@ namespace WorkHours {
 					reader.Close ();
 			}
 			return (fLoad);
-
-		}
-//------------------------------------------------------------------------------
-		public bool LoadFromReader (MySqlDataReader reader, ref string strErr) {
-			bool fRead;
-
-			try {
-				Clear ();
-				ID = TMisc.ReadIntField(reader, FieldID);
-				Desc = TMisc.ReadTextField (reader, FieldDesc, ref strErr);
-				Location = TMisc.ReadTextField (reader, FieldLoc, ref strErr);
-				Start = TMisc.ReadDateTimeField (reader, FieldStart);
-				End =   TMisc.ReadDateTimeField (reader, FieldEnd);
-				fRead = true;
-			}
-			catch (Exception e) {
-				fRead =false;
-				if (strErr.Length == 0)
-					strErr = e.Message;
-			}
-			return (fRead);
 		}
 //------------------------------------------------------------------------------
 	}
