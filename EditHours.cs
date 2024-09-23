@@ -84,6 +84,7 @@ namespace WorkHours {
 			DownloadOutputs(cmd);
 			dtpStartDate.Value = wh.Start != null ? (DateTime)wh.Start : DateTime.Now;
 			DownloadTime(comboStart, wh.Start);
+			DownloadTime(comboEnd, wh.End);
 			//dtpStartTime.Value = wh.Start != null ? (DateTime) wh.Start : DateTime.Now;
 			dtpEndDate.Value = wh.End != null ? (DateTime)wh.End : DateTime.Now;
 			//dtpEndDate.Value   = wh.End   != null ? (DateTime) wh.End : DateTime.Now;
@@ -102,8 +103,8 @@ namespace WorkHours {
 				if(TimeStringToInt(strTime, ref nTime)) {
 					int nHours = nTime / 100;
 					int nMin = nTime % 100;
-					dtRes.Value.AddHours(nHours);
-					dtRes.Value.AddMinutes(nMin);
+					dtRes = dtRes.Value.AddHours(nHours);
+					dtRes = dtRes.Value.AddMinutes(nMin);
 				}
 			} catch {
 				dtRes = null;
@@ -117,6 +118,7 @@ namespace WorkHours {
 			wh.Start = CombineDateTime(dtpStartDate.Value, (string)comboStart.SelectedItem);
 			wh.End = CombineDateTime(dtpEndDate.Value, (string)comboEnd.SelectedItem);
 			wh.Desc = txtbxDesc.Text.Trim();
+			wh.Location = txtbxLoc.Text.Trim();
 			wh.Subject = UploadSubject();
 			wh.Outputs = UploadOutputs();
 		}
@@ -194,6 +196,14 @@ namespace WorkHours {
 //-----------------------------------------------------------------------------
 		private void btnOK_Click(object sender, EventArgs e) {
 			DialogResult = DialogResult.OK;
+		}
+
+		private void button1_Click(object sender, EventArgs e) {
+			TWorkHoursInfo wh = new TWorkHoursInfo();
+			wh.Clear();
+
+			wh.Start = CombineDateTime(dtpStartDate.Value, (string)comboStart.SelectedItem);
+			wh.Start = CombineDateTime(dtpEndDate.Value, (string)comboEnd.SelectedItem);
 		}
 //-----------------------------------------------------------------------------
 	}
