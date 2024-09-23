@@ -40,6 +40,7 @@
 			txtID = new TextBox();
 			label6 = new Label();
 			txtbxLoc = new TextBox();
+			button1 = new Button();
 			SuspendLayout();
 			// 
 			// btnCancel
@@ -196,6 +197,16 @@
 			txtbxLoc.Size = new Size(100, 23);
 			txtbxLoc.TabIndex = 30;
 			// 
+			// button1
+			// 
+			button1.Location = new Point(230, 308);
+			button1.Name = "button1";
+			button1.Size = new Size(75, 23);
+			button1.TabIndex = 31;
+			button1.Text = "button1";
+			button1.UseVisualStyleBackColor = true;
+			button1.Click += button1_Click;
+			// 
 			// DlgEditHours
 			// 
 			AcceptButton = btnOK;
@@ -203,6 +214,7 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
 			ClientSize = new Size(304, 430);
+			Controls.Add(button1);
 			Controls.Add(txtbxLoc);
 			Controls.Add(label6);
 			Controls.Add(txtID);
@@ -251,5 +263,6 @@
 		private TextBox txtID;
 		private Label label6;
 		private TextBox txtbxLoc;
+		private Button button1;
 	}
 }
