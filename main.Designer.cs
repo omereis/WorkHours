@@ -35,6 +35,7 @@
 			popupHours = new ToolStripMenuItem();
 			miHoursNew = new ToolStripMenuItem();
 			miHoursEdit = new ToolStripMenuItem();
+			miHoursDel = new ToolStripMenuItem();
 			status_bar = new StatusStrip();
 			sblblDatabase = new ToolStripStatusLabel();
 			dlgIni = new OpenFileDialog();
@@ -124,7 +125,7 @@
 			// 
 			// popupHours
 			// 
-			popupHours.DropDownItems.AddRange(new ToolStripItem[] { miHoursNew, miHoursEdit });
+			popupHours.DropDownItems.AddRange(new ToolStripItem[] { miHoursNew, miHoursEdit, miHoursDel });
 			popupHours.Name = "popupHours";
 			popupHours.Size = new Size(73, 20);
 			popupHours.Text = "דיווח שעות";
@@ -142,6 +143,13 @@
 			miHoursEdit.Size = new Size(180, 22);
 			miHoursEdit.Text = "עריכה...";
 			miHoursEdit.Click += miHoursEdit_Click;
+			// 
+			// miHoursDel
+			// 
+			miHoursDel.Name = "miHoursDel";
+			miHoursDel.Size = new Size(180, 22);
+			miHoursDel.Text = "מחיקה...";
+			miHoursDel.Click += miHoursDel_Click;
 			// 
 			// status_bar
 			// 
@@ -178,6 +186,8 @@
 			gridHours.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 			gridHours.Size = new Size(752, 309);
 			gridHours.TabIndex = 2;
+			gridHours.CellMouseDoubleClick += gridHours_CellMouseDoubleClick;
+			gridHours.ColumnHeaderMouseClick += gridHours_ColumnHeaderMouseClick;
 			// 
 			// Column11
 			// 
@@ -319,5 +329,6 @@
 		private TextBox textBox1;
 		private TextBox textBox2;
 		private ToolStripMenuItem miHoursEdit;
+		private ToolStripMenuItem miHoursDel;
 	}
 }

@@ -82,16 +82,12 @@ namespace WorkHours {
 			txtID.Text = wh.ID.ToString();
 			DownloadSubject(cmd);
 			DownloadOutputs(cmd);
-			dtpStartDate.Value = wh.Start != null ? (DateTime)wh.Start : DateTime.Now;
 			DownloadTime(comboStart, wh.Start);
 			DownloadTime(comboEnd, wh.End);
-			//dtpStartTime.Value = wh.Start != null ? (DateTime) wh.Start : DateTime.Now;
-			dtpEndDate.Value = wh.End != null ? (DateTime)wh.End : DateTime.Now;
-			//dtpEndDate.Value   = wh.End   != null ? (DateTime) wh.End : DateTime.Now;
-			if(wh.Subject != null)
-				SelectItem(comboSubjects, wh.Subject.Items[0]);
+			DownloadSubject (wh);
+			DownloadOutputs (wh);
 			txtbxDesc.Text = wh.Desc;
-			SelectItems(clboxOutputs, wh.Outputs);
+			txtbxLoc.Text = wh.Location;
 		}
 //-----------------------------------------------------------------------------
 		public static DateTime? CombineDateTime(DateTime dt, string strTime) {
@@ -204,6 +200,25 @@ namespace WorkHours {
 
 			wh.Start = CombineDateTime(dtpStartDate.Value, (string)comboStart.SelectedItem);
 			wh.Start = CombineDateTime(dtpEndDate.Value, (string)comboEnd.SelectedItem);
+		}
+//-----------------------------------------------------------------------------
+		private void DownloadSubject (TWorkHoursInfo wh) {
+			if (wh.Subject != null)
+				if (wh.Subject.GetItemsCount() > 0) {
+					int idx = comboSubjects.Items.IndexOf(wh.Subject.Items[0]);
+					if (idx >= 0)
+						comboSubjects.SelectedIndex = idx;
+				}
+		}
+//-----------------------------------------------------------------------------
+		private void DownloadOutputs (TWorkHoursInfo wh) {
+			if (wh.Outputs != null) {
+				for (int n=0 ; n < wh.Outputs.GetItemsCount(); n++) {
+					int idx = clboxOutputs.Items.IndexOf (wh.Outputs.Items[n]);
+					if (idx >= 0)
+						clboxOutputs.SetItemChecked (idx, true);
+				}
+			}
 		}
 //-----------------------------------------------------------------------------
 	}

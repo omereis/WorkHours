@@ -3,34 +3,38 @@
   "WorkspaceRootPath": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\workhoursinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:workhoursinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\common\\stringint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\clients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:clients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\hoursgridsorter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:hoursgridsorter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\edithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:edithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\workhoursinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:workhoursinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\common\\misc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\edithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:edithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\common\\misc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\clients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:clients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\common\\stringint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|c:\\users\\omer\\documents\\projects\\workhours\\edithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF78DB1A-186D-45FE-BB1B-804CA3E0FA0D}|WorkHours.csproj|solutionrelative:edithours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,23 +44,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "HoursGridSorter.cs",
+              "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\HoursGridSorter.cs",
+              "RelativeDocumentMoniker": "HoursGridSorter.cs",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\HoursGridSorter.cs",
+              "RelativeToolTip": "HoursGridSorter.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA6wBkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T08:17:03.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Misc.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Common\\Misc.cs",
               "RelativeDocumentMoniker": "..\\Common\\Misc.cs",
               "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Common\\Misc.cs",
               "RelativeToolTip": "..\\Common\\Misc.cs",
-              "ViewState": "AQIAAMoAAAAAAAAAAAAAANIAAAArAAAA",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAwwPQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T08:04:24.09Z"
+              "WhenOpened": "2024-09-11T08:04:24.09Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Clients.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\Clients.cs",
               "RelativeDocumentMoniker": "Clients.cs",
@@ -69,33 +87,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "StringInt.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\Common\\StringInt.cs",
               "RelativeDocumentMoniker": "..\\Common\\StringInt.cs",
-              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Common\\StringInt.cs*",
-              "RelativeToolTip": "..\\Common\\StringInt.cs*",
-              "ViewState": "AgIAAFAAAAAAAAAAAADwv2cAAAATAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\Common\\StringInt.cs",
+              "RelativeToolTip": "..\\Common\\StringInt.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAqwHEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T04:24:27.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-06T04:24:27.643Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "main.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
               "RelativeDocumentMoniker": "main.cs",
               "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
               "RelativeToolTip": "main.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAApwOUAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAALwAAAAAAAAAAAAswNYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-04T07:52:43.173Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "main.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\main.cs",
               "RelativeDocumentMoniker": "main.cs",
@@ -107,40 +124,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "WorkHoursInfo.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\WorkHoursInfo.cs",
               "RelativeDocumentMoniker": "WorkHoursInfo.cs",
-              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\WorkHoursInfo.cs*",
-              "RelativeToolTip": "WorkHoursInfo.cs*",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFEAAAAFAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\WorkHoursInfo.cs",
+              "RelativeToolTip": "WorkHoursInfo.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAxwH4AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-01T08:16:00.259Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "EditHours.cs",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditHours.cs",
               "RelativeDocumentMoniker": "EditHours.cs",
               "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditHours.cs",
               "RelativeToolTip": "EditHours.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAQwG4AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-01T08:04:28.462Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "EditHours.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditHours.cs",
               "RelativeDocumentMoniker": "EditHours.cs",
               "ToolTip": "C:\\Users\\Omer\\Documents\\Projects\\WorkHours\\EditHours.cs [Design]",
               "RelativeToolTip": "EditHours.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T08:02:36.424Z"
+              "WhenOpened": "2024-09-01T08:02:36.424Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

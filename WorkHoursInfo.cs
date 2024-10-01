@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -134,6 +135,49 @@ namespace WorkHours {
 			return (fLoad);
 		}
 //------------------------------------------------------------------------------
+		protected void AddOutput (TStringInt si) {
+			if (Outputs == null)
+				Outputs = new TOutputs();
+			if (Outputs.IndexOfID (si.ID) < 0)
+				Outputs.AddItem (si);
+		}
+//------------------------------------------------------------------------------
+		public int CompareStart (DateTime? dtOther) {
+			return (TMisc.CompareDates (m_dtStart, dtOther));
+		}
+//------------------------------------------------------------------------------
+		public int CompareEnd (DateTime? dtOther) {
+			return (TMisc.CompareDates (m_dtEnd, dtOther));
+		}
+//------------------------------------------------------------------------------
+		public int CompareSubject (TSubjects subject) {
+			return (String.Compare (SubjectAsText (Subject), SubjectAsText (subject), true));
+		}
+//------------------------------------------------------------------------------
+		public int CompareOutputs (TOutputs outputs) {
+			return (String.Compare (OutputsAsText (Outputs), OutputsAsText (outputs), true));
+		}
+//------------------------------------------------------------------------------
+		public static string SubjectAsText (TSubjects subject) {
+			string strSubject="";
+			if (subject != null)
+				strSubject = subject.Items[0].Name;
+			return (strSubject);
+		}
+//------------------------------------------------------------------------------
+		public string OutputsAsText (TOutputs outputs) {
+			string strOutput="";
+
+			if (outputs != null) {
+				for (int n=0 ; n < outputs.Items.Length ; n++) {
+					strOutput += outputs.Items[n].Name;
+					if (n < outputs.Items.Length - 1)
+						strOutput += ", ";
+				}
+			}
+			return (strOutput);
+		}
+//------------------------------------------------------------------------------
 	}
 //------------------------------------------------------------------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -141,6 +185,7 @@ namespace WorkHours {
 	internal class TWorkHoursInfoDB : TWorkHoursInfo {
 		private static readonly string Table="tblWorkHours";
 		private static readonly string View = "vWorkHours";
+		private static readonly string ViewWorkOutputs = "vWorkOutputs";
 		private static readonly string FieldID = "wh_id";
 		private static readonly string FieldStart = "dtStart";
 		private static readonly string FieldEnd = "dtEnd";
@@ -317,7 +362,36 @@ namespace WorkHours {
 				cmd.CommandText = String.Format ("select * from {0} where {1}={2};", View, FieldID, ID);
 				reader = cmd.ExecuteReader ();
 				if ((reader.Read ()) && (fLoad)) {
-					fLoad = LoadFromReader (reader, ref strErr);
+					if ((fLoad = LoadFromReader (reader, ref strErr)) == true) {
+						reader.Close ();
+						fLoad = LoadOutputs (cmd, ref strErr);
+					}
+				}
+			}
+			catch (Exception e) {
+				strErr = e.Message;
+				fLoad = false;
+			}
+			finally {
+				if (reader != null)
+					reader.Close ();
+			}
+			return (fLoad);
+		}
+//------------------------------------------------------------------------------
+		public bool LoadOutputs (MySqlCommand cmd, ref string strErr) {
+			bool fLoad;
+			MySqlDataReader reader = null;
+
+			try {
+				TOutputs outputs = new TOutputs ();
+				TStringInt si = new TStringInt ();
+				fLoad = true;
+				cmd.CommandText = String.Format ("select * from {0} where {1}={2};", ViewWorkOutputs, FieldID, ID);
+				reader = cmd.ExecuteReader ();
+				while ((reader.Read ()) && (fLoad)) {
+					if (outputs.LoadFromReader (si, reader, ref strErr))
+						AddOutput (si);
 				}
 			}
 			catch (Exception e) {

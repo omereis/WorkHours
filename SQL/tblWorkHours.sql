@@ -57,6 +57,14 @@ select * from tblSubjects;
 select * from tblOutputs;
 select * from vWorkSubjects;
 
+select * from tbl_work_outputs,tblOutputs where tbl_work_outputs.output_id=tblOutputs.output_id;
+
+create view vWorkOutputs
+as
+select wh_id,tblOutputs.output_id,output_name from tbl_work_outputs,tblOutputs where tbl_work_outputs.output_id=tblOutputs.output_id;
+
+select * from vWorkOutputs;
+
 insert into tblWorkHours (wh_id,subject_id) values (4,1);
 insert into tbl_work_outputs (wh_id,output_id) values (1,1);
 insert into tbl_work_outputs (wh_id,output_id) values (3,3);
@@ -97,3 +105,4 @@ as
 
 
 select * from vWorkHours order by wh_id;
+select distinct wh_id from vWorkHours;
